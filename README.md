@@ -27,7 +27,7 @@ bless --device /dev/disk0s1 --setBoot
 
 **Warning**
 
-**Please try all the above on a usb stick util every works before you move everything on the MacBook disk. Otherwise it will make your MacOs unbootable. The author won't bear any responsibity for the damage of your Mac or OS system.**
+**Please try all the above on a usb stick util everything works before you move everything on the MacBook disk. Otherwise it will make your MacOs unbootable. The author won't bear any responsibity for the damage of your Mac or OS system.**
 
 **TEST result**
 <img width="1247" alt="image" src="https://user-images.githubusercontent.com/16056492/162120946-9720a696-100d-447f-bd7f-6cf900e3191a.png">
