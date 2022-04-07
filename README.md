@@ -15,13 +15,14 @@ There are a few solutions online to solve this problem.
 ```
 sudo grub-mkimage -d . -O x86_64-efi -o /Volumes/EFI/EFI/BOOT/BOOTx64.efi -p /EFI/grub/ normal chain linux search search_fs_file search_fs_uuid  search_label ls help boot echo configfile part_gpt part_msdos fat ntfs ext2 iso9660 udf hfsplus lsmmap lspci halt reboot hexdump pcidump regexp setpci lsacpi chain test serial multiboot
 ```
-parameter explained:
+```
 -o, --output=,FILE/
 output a generated image to FILE [default=stdout]
 -O, --format=,FORMAT/
 generate an image in FORMAT available formats: i386-coreboot, i386-multiboot, i386-pc, i386-xen_pvh, i386-pc-pxe, i386-pc-eltorito, i386-efi, i386-ieee1275, i386-qemu, x86_64-efi, i386-xen, x86_64-xen, mipsel-yeeloong-flash, mipsel-fuloong2f-flash, mipsel-loongson-elf, powerpc-ieee1275, sparc64-ieee1275-raw, sparc64-ieee1275-cdcore, sparc64-ieee1275-aout, ia64-efi, mips-arc, mipsel-arc, mipsel-qemu_mips-elf, mips-qemu_mips-flash, mipsel-qemu_mips-flash, mips-qemu_mips-elf, arm-uboot, arm-coreboot-vexpress, arm-coreboot-veyron, arm-efi, arm64-efi, riscv32-efi, riscv64-efi
 -p, --prefix=,DIR/
 set prefix directory
+```
 
 4. Put the grub.cfg into grub folder under EFI partition, adjusting the following code according to your hardware. You also need to figure out the PCIE registers like 50 and 80 which will be different from mine.
 ```
