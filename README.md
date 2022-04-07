@@ -38,7 +38,7 @@ function enable_aspm_pcie_nvme {
 }
 
 ```
-Tips for find the PCIE registers(https://gist.github.com/baybal/b499fc5811a7073df0c03ab8da4be904).
+Tips to find the PCIE registers(https://gist.github.com/baybal/b499fc5811a7073df0c03ab8da4be904).
 ```
 function find_aspm_byte_address()
 {
