@@ -75,7 +75,7 @@ function find_aspm_byte_address()
 }
 ```
 
-6. Download rEFInd release code, you can download the source code and build it as well.
+6. Download rEFInd release package, you can download the source code and build it as well.
    https://sourceforge.net/projects/refind/
    
 6. Follow rEFInd manual installation instructions to prepare the EFI.
