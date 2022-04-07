@@ -6,6 +6,10 @@ There are a few solutions to solve this problem.
 1. Use Hackintosh OpenCore bootloader to inject PCIE device properties to enable ASPM. It's easy to mess up things with Hackintosh stuff.
 2. Use GRUB2 bootloader along with lspci/setpci utils module to enable ASPM, this is the option I used. Also need rEFInd bootloader to load AFPS MacOs. GRUB2 will chainloader rEFInd bootloader which will pick the MacOs system on AFPS volume. If you install MacOs on HFS+, then you only need GRUB2 bootloader which is more clean.
 
+**Warning**
+
+**Please try on a usb stick before you move everything on the MacBook disk util everything works. Otherwise it will possibly make your MacOs unbootable. The author bears no responsibity for the damage of your Mac or OS system.**
+
 **Steps to build the EFI:**
 
 1. Download GRUB2 source code from https://ftp.gnu.org/gnu/grub/grub-2.06.tar.gz
@@ -82,10 +86,5 @@ function find_aspm_byte_address()
 ```
 bless --device /dev/disk0s1 --setBoot
 ```
-
-**Warning**
-
-**Please try all the above on a usb stick util everything works before you move everything on the MacBook disk. Otherwise it will make your MacOs unbootable. The author bears no responsibity for the damage of your Mac or OS system.**
-
 **TEST result**
 <img width="1247" alt="image" src="https://user-images.githubusercontent.com/16056492/162120946-9720a696-100d-447f-bd7f-6cf900e3191a.png">
