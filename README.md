@@ -3,9 +3,9 @@
 Recently I did ssd upgrade for my MacBook Pro 2015, this EFI is to sort out the power drain issue as MacOs doesn't support third party nvme SSD power management. The general idea is to enable ASPM L1 power management, which approximately descreased idle consumption by 50%.
 
 There are a few solutions online to solve this problem.
-1. Use Hacktosh OpenCore bootloader to inject PCIE device properties to enable ASPM. It's easy to mess up things with Hackintosh stuff.
+1. Use Hackintosh OpenCore bootloader to inject PCIE device properties to enable ASPM. It's easy to mess up things with Hackintosh stuff.
 2. Inject close source third party kext SSDPmEnabler, not safe !!!
-3. Use GRUB2 bootloader along with lspci/setpci utils module to enable ASPM, this is option I used. Also need rEfind bootloader to load AFPS MacOs. GRUB2 will chainloader rEfind bootloader which will pick the MacOs system which is on AFPS volume. If you install MacOs on HFS+, then you only need GRUB2 bootloader which is more clean.
+3. Use GRUB2 bootloader along with lspci/setpci utils module to enable ASPM, this is the option I used. Also need rEFInd bootloader to load AFPS MacOs. GRUB2 will chainloader rEFInd bootloader which will pick the MacOs system on AFPS volume. If you install MacOs on HFS+, then you only need GRUB2 bootloader which is more clean.
 
 **Steps to build the EFI:**
 
