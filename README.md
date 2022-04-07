@@ -70,7 +70,7 @@ function find_aspm_byte_address()
    https://sourceforge.net/projects/refind/
    
 6. Follow rEFInd manual installation instructions to prepare the EFI.
-7. If everything is all set, then you can run the cmd to bless the bootloader. /dev/disk0s1 should be the EFI partition.
+7. If everything is all set, then you can run the cmd in recovery mode to bless the bootloader. /dev/disk0s1 should be the EFI partition.
 ```
 bless --device /dev/disk0s1 --setBoot
 ```
