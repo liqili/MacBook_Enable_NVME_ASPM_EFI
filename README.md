@@ -22,9 +22,9 @@ ROOT_COMPLEX="00:1c.5"
 
 function enable_aspm_pcie_nvme {
     insmod setpci
-  	 insmod lspci
+    insmod lspci
     setpci -s ${ROOT_COMPLEX} 50.b=3:3
-  	 setpci -s ${ENDPOINT} 80.b=3:3
+    setpci -s ${ENDPOINT} 80.b=3:3
 
 }
 
