@@ -15,8 +15,58 @@ There are a few solutions online to solve this problem.
 ```
 sudo grub-mkimage -d . -O x86_64-efi -o /Volumes/EFI/EFI/BOOT/BOOTx64.efi -p /EFI/grub/ normal chain linux search search_fs_file search_fs_uuid  search_label ls help boot echo configfile part_gpt part_msdos fat ntfs ext2 iso9660 udf hfsplus lsmmap lspci halt reboot hexdump pcidump regexp setpci lsacpi chain test serial multiboot
 ```
-4. Put the grub.cfg into grub folder under EFI partition.
-5. Download rEFInd release code, you can download the source code and build it as well.
+4. Put the grub.cfg into grub folder under EFI partition, adjusting the following code according to your hardware. You also need to figure out the PCIE registers like 50 and 80 which will be different from mine.
+```
+ENDPOINT="04:00.0"
+ROOT_COMPLEX="00:1c.5"
+
+function enable_aspm_pcie_nvme {
+    insmod setpci
+  	 insmod lspci
+    setpci -s ${ROOT_COMPLEX} 50.b=3:3
+  	 setpci -s ${ENDPOINT} 80.b=3:3
+
+}
+
+```
+Tips for find the PCIE registers(https://gist.github.com/baybal/b499fc5811a7073df0c03ab8da4be904).
+```
+function find_aspm_byte_address()
+{
+	device_present $ENDPOINT present
+	if [[ $? -ne 0 ]]; then
+		exit
+	fi
+
+	SEARCH=$(setpci -s $1 34.b)
+	# We know on the first search $SEARCH will not be
+	# 10 but this simplifies the implementation.
+	while [[ $SEARCH != 10 && $SEARCH_COUNT -le $MAX_SEARCH ]]; do
+		END_SEARCH=$(setpci -s $1 ${SEARCH}.b)
+
+		# Convert hex digits to uppercase for bc
+		SEARCH_UPPER=$(printf "%X" 0x${SEARCH})
+
+		if [[ $END_SEARCH = 10 ]]; then
+			ASPM_BYTE_ADDRESS=$(echo "obase=16; ibase=16; $SEARCH_UPPER + 10" | bc)
+			break
+		fi
+
+		SEARCH=$(echo "obase=16; ibase=16; $SEARCH + 1" | bc)
+		SEARCH=$(setpci -s $1 ${SEARCH}.b)
+
+		let SEARCH_COUNT=$SEARCH_COUNT+1
+	done
+
+	if [[ $SEARCH_COUNT -ge $MAX_SEARCH ]]; then
+		echo -e "Long loop while looking for ASPM word for $1"
+		return 1
+	fi
+	return 0
+}
+```
+
+6. Download rEFInd release code, you can download the source code and build it as well.
    https://sourceforge.net/projects/refind/
    
 6. Follow rEFInd manual installation instructions to prepare the EFI.
