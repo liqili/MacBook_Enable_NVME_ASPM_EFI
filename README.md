@@ -10,7 +10,7 @@ There are a few solutions to solve this problem.
 
 1. Download GRUB2 source code from https://ftp.gnu.org/gnu/grub/grub-2.06.tar.gz
 2. Compile the code on a Linux machine following the GRUB2 installation instructions.
-3. Create GRUB2 EFI image by running the following cmd:
+3. Create GRUB2 EFI image by running the following cmd(need adjust the target folder):
 ```
 sudo grub-mkimage -d . -O x86_64-efi -o /Volumes/EFI/EFI/BOOT/BOOTx64.efi -p /EFI/grub/ normal chain linux search search_fs_file search_fs_uuid  search_label ls help boot echo configfile part_gpt part_msdos fat ntfs ext2 iso9660 udf hfsplus lsmmap lspci halt reboot hexdump pcidump regexp setpci lsacpi chain test serial multiboot
 ```
