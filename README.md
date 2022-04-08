@@ -1,4 +1,4 @@
-# MackBook_NVME_ASPM_EFI
+# MacBook_Enable_NVME_ASPM_EFI
 
 Recently I did ssd upgrade for my MacBook Pro 2015, this EFI is to sort out the power drain issue as MacOs doesn't support third party nvme SSD power management. The general idea is to enable ASPM L1 power management, which approximately descreased idle consumption by 50%.
 
