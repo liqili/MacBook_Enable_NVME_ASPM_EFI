@@ -88,3 +88,7 @@ bless --device /dev/disk0s1 --setBoot
 ```
 **TEST result**
 <img width="1247" alt="image" src="https://user-images.githubusercontent.com/16056492/162120946-9720a696-100d-447f-bd7f-6cf900e3191a.png">
+
+Test from my newly installed Kingston A2000 1TB SSD
+<img width="1184" alt="image" src="https://user-images.githubusercontent.com/16056492/166613240-b5d0fa25-1379-47d9-a5d6-3f66df04dc17.png">
+
